@@ -45,7 +45,6 @@
     hugo # static site generator
     glow # markdown previewer in terminal
     zathura # pdf reader. maybe okular?
-    neovim
 
     # audio control
     pavucontrol
@@ -106,6 +105,11 @@
       clock24 = true;
       keyMode = "vi";
       extraConfig = "mouse on";
+    };
+
+    neovim = {
+      enable = true;
+      vimAlias = true;
     };
 
     # a cat clone written in rust
