@@ -268,9 +268,9 @@
   # services.libinput.enable = true;
 
   # Enable sound.
-  # hardware.pulseaudio.enable = true;
+  #hardware.pulseaudio.enable = true;
   # OR
-  security.rtkit.enable = true;
+  # security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;

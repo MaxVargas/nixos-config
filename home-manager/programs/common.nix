@@ -30,13 +30,8 @@
     #gnupg
     libnotify # sends notifications to the daemon
     dunst # the notification daemon (alternate mako)
-    #wineWowPackages.wayland
     graphviz
     xdg-utils
-    #waybar # bar for wayland. Maybe try waybar/eww
-    #waybar.overrideAttrs (oldAttrs: {
-    #  mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    #}))
     swww # wallpaper daemon (alts. hyprpaper swaybg wpaperd mpvpaper)
     rofi-wayland # app launcher for wayland
    
@@ -84,9 +79,11 @@
     ipcalc  # it is a calculator for the IPv4/v6 addresses
     networkmanagerapplet # network manager
 
-    # programming languages
-    rustup
+    # programming
+    gnumake
     gcc
+    libgcc
+    rustup
     python313
     uv
     elan
