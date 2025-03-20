@@ -16,5 +16,8 @@
     userName = "MaxVargas";
     userEmail = "mxvrgs@gmail.com";
     enable = true;
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 }
