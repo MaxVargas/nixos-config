@@ -112,6 +112,8 @@
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
 
+  #####################################
+  # Fonts
   fonts = {
     packages = with pkgs; [
       # icon fonts
@@ -124,6 +126,34 @@
 
       # nerdfonts
       (nerdfonts.override {fonts = ["IosevkaTerm" "JetBrainsMono"];})
+
+      # Iosevka
+      iosevka
+
+      (iosevka.override {
+      set = "etoile";
+      privateBuildPlan = {
+        family = "Iosevka Etoile";
+        design = [
+          "type"
+          "slab"
+          "v-at-fourfold"
+          "v-j-serifed"
+          "no-cv-ss"
+          "no-ligation"
+        ];
+        upright = [ "v-i-serifed" "v-l-serifed" ];
+        italic = [ "v-i-italic" "v-l-italic" ];
+        oblique = [ "v-i-serifed" "v-l-serifed" ];
+        post.design = [ "diversity-1" ];
+        #widths.normal = {
+        #  shape = 6;
+        #  menu = 5;
+        #  css = "normal";
+        #};
+      };
+    })
+
     ];
 
     # use fonts specified by user rather than default ones
@@ -138,11 +168,15 @@
       monospace = [
         "JetBrainsMono Nerd Font" 
         "IosevkaTerm Nerd Font" 
+	"Iosevka Etoile"
+	"Iosevka"
         "Noto Color Emoji"
       ];
       emoji = ["Noto Color Emoji"];
     };
   };
+  # End Fonts
+  #####################################
 
   # Couple programs we want from the beginning
   # Apparently steam is easiest from configuration.nix

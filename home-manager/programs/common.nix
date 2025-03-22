@@ -81,6 +81,7 @@
 
     # programming
     gnumake
+    cmake
     gcc
     libgcc
     rustup
