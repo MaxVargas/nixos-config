@@ -40,6 +40,7 @@
     hugo # static site generator
     glow # markdown previewer in terminal
     zathura # pdf reader. maybe okular?
+    zed-editor
 
     # audio control
     pavucontrol
@@ -55,6 +56,7 @@
 
     iotop # io monitoring
     iftop # network monitoring
+    killport
 
     # system call monitoring
     strace # system call monitoring
