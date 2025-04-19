@@ -20,6 +20,10 @@
       # ref = ""; # v0.42.0
       # submodules = true;
     };
+    # nix-ld = {
+    #   url = "github:Mic92/nix-ld";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
@@ -52,6 +56,10 @@
               home-manager.extraSpecialArgs = inputs // specialArgs;
               home-manager.users.${username} = import ./users/${username}/home.nix;
             }
+
+	    # Nix-ld for handling prepackaged binaries
+	    # nix-ld.nixosModules.nix-ld
+	    # { programs.nix-ld.dev.enable = true; }
           ];
         };
     };
