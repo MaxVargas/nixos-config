@@ -12,6 +12,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.supportedFilesystems = [ "ntfs" ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-label/NIXROOT";
@@ -22,6 +23,12 @@
     { device = "/dev/disk/by-label/NIXBOOT";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
+    };
+
+  fileSystems."/atlantis" =
+    { device = "/dev/disk/by-uuid/4C0E02570E023A8A";
+      fsType = "ntfs";
+      options = [ "rw" "uid=max" ];
     };
 
   swapDevices = [ 

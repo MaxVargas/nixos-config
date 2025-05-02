@@ -34,6 +34,8 @@
     xdg-utils
     swww # wallpaper daemon (alts. hyprpaper swaybg wpaperd mpvpaper)
     rofi-wayland # app launcher for wayland
+    swayimg # image viewer
+    imv # another image viewer
    
     # productivity
     obsidian
@@ -96,6 +98,7 @@
     ghc
     haskell-language-server
     cabal-install
+    haskellPackages.tidal
   ];
 
   programs = {
