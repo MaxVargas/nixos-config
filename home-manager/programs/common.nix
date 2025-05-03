@@ -33,6 +33,7 @@
     graphviz
     xdg-utils
     swww # wallpaper daemon (alts. hyprpaper swaybg wpaperd mpvpaper)
+    eww # status bar
     rofi-wayland # app launcher for wayland
     swayimg # image viewer
     imv # another image viewer

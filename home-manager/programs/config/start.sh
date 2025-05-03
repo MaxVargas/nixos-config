@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 # initializing wallpaper daemon
-swww init &
+swww-daemon &
 # set wallpaper
-# swww img PATH
+swww img ~/Pictures/wallpapers/JeanBart.png
 
 # network manager
 # install by adding pkgs.networkmanagerapplet to packages
