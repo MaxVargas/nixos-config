@@ -10,6 +10,13 @@ swww img ~/Pictures/wallpapers/JeanBart.png
 nm-applet --indicator &
 
 # waybar is already started
+waybar -c /etc/nixos/home-manager/programs/config/waybar/config.jsonc -s /etc/nixos/home-manager/programs/config/waybar/style.css
 
 # dunst
 dunst
+
+# firefox
+# firefox
+
+# terminal
+# $terminal

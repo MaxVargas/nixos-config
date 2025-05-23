@@ -14,6 +14,12 @@
     ripgrep # recursively searches directories for a regex pattern
     yq-go # yaml processor https://github.com/mikefarah/yq
     fzf # A command-line fuzzy finder
+    killall # to kill
+
+    # Desktop
+    waybar # status bar
+    swww # wallpaper daemon (alts. hyprpaper swaybg wpaperd mpvpaper)
+    rofi-wayland # app launcher for wayland
 
     # misc
     cowsay
@@ -32,11 +38,9 @@
     dunst # the notification daemon (alternate mako)
     graphviz
     xdg-utils
-    swww # wallpaper daemon (alts. hyprpaper swaybg wpaperd mpvpaper)
-    eww # status bar
-    rofi-wayland # app launcher for wayland
     swayimg # image viewer
     imv # another image viewer
+    rmpc # rust music player
    
     # productivity
     obsidian

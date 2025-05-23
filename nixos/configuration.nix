@@ -212,7 +212,7 @@
     lm_sensors # monitoring
     scrot # screenshots
     yazi # terminal file manager
-    waybar
+    #waybar
     #waybar.overrideAttrs (oldAttrs: {
     #  mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     #}))
@@ -286,7 +286,10 @@
   };
 
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  xdg.portal.extraPortals = [ 
+    pkgs.xdg-desktop-portal-hyprland 
+    pkgs.xdg-desktop-portal-gtk
+  ];
 
   # End Wayland
   #####################################
@@ -304,7 +307,7 @@
   # Enable sound.
   #hardware.pulseaudio.enable = true;
   # OR
-  # security.rtkit.enable = true;
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -313,6 +316,19 @@
     # For using JACK applications
     jack.enable = true;
   };
+
+  # Continue debugging to set up RMPC...
+  services.mpd.user = "max";
+  systemd.services.mpd.environment = {
+    # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
+    XDG_RUNTIME_DIR = "/run/user/${toString config.users.users.max.uid}"; # User-id must match above user. MPD will look inside this directory for the PipeWire socket.
+  };
+  services.mpd.extraConfig = ''
+    audio_output {
+      type "pipewire"
+      name "Pipewire!" # This can be whatever you want
+    }
+  '';
 
   #############################################################################
   #
