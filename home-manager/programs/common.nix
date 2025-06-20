@@ -15,6 +15,7 @@
     yq-go # yaml processor https://github.com/mikefarah/yq
     fzf # A command-line fuzzy finder
     killall # to kill
+    dmidecode
 
     # Desktop
     waybar # status bar

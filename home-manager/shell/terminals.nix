@@ -30,7 +30,7 @@ in
     settings = {
       main = {
         term = "xterm-256color";
-	font = "Iosevka Etoile:size=13";
+	font = "Iosevka:size=13";
 	font-size-adjustment = "1.0";
 	dpi-aware = "no";
       };

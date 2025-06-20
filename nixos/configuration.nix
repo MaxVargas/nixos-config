@@ -71,6 +71,8 @@
       ];
 
       builders-use-substitutes = true;
+      max-jobs=2;
+      cores=2;
     };
 
     # Add yourself as a trusted user for devenv
@@ -125,34 +127,36 @@
       noto-fonts-emoji
 
       # nerdfonts
-      (nerdfonts.override {fonts = ["IosevkaTerm" "JetBrainsMono"];})
+      nerd-fonts.iosevka-term
+      nerd-fonts.jetbrains-mono
+      #(nerdfonts.override {fonts = ["IosevkaTerm" "JetBrainsMono"];})
 
       # Iosevka
       iosevka
 
-      (iosevka.override {
-      set = "etoile";
-      privateBuildPlan = {
-        family = "Iosevka Etoile";
-        design = [
-          "type"
-          "slab"
-          "v-at-fourfold"
-          "v-j-serifed"
-          "no-cv-ss"
-          "no-ligation"
-        ];
-        upright = [ "v-i-serifed" "v-l-serifed" ];
-        italic = [ "v-i-italic" "v-l-italic" ];
-        oblique = [ "v-i-serifed" "v-l-serifed" ];
-        post.design = [ "diversity-1" ];
-        #widths.normal = {
-        #  shape = 6;
-        #  menu = 5;
-        #  css = "normal";
-        #};
-      };
-    })
+      # (iosevka.override {
+      #   set = "etoile";
+      #   privateBuildPlan = {
+      #     family = "Iosevka Etoile";
+      #     design = [
+      #       "type"
+      #       "slab"
+      #       "v-at-fourfold"
+      #       "v-j-serifed"
+      #       "no-cv-ss"
+      #       "no-ligation"
+      #     ];
+      #     upright = [ "v-i-serifed" "v-l-serifed" ];
+      #     italic = [ "v-i-italic" "v-l-italic" ];
+      #     oblique = [ "v-i-serifed" "v-l-serifed" ];
+      #     post.design = [ "diversity-1" ];
+      #     #widths.normal = {
+      #     #  shape = 6;
+      #     #  menu = 5;
+      #     #  css = "normal";
+      #     #};
+      #   };
+      # })
 
     ];
 

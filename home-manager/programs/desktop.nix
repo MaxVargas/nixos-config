@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     wofi
-    dolphin
+    kdePackages.dolphin
     hyprpaper
   ];
 
