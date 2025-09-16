@@ -14,6 +14,7 @@
     mangohud # gaming performance monitor
     # nur.repos.ataraxiasjel.waydroid-script # Install android for AMD
     obs-studio
+    burpsuite
   ];
 
   home.sessionVariables = {

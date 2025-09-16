@@ -20,7 +20,7 @@
     # Desktop
     waybar # status bar
     swww # wallpaper daemon (alts. hyprpaper swaybg wpaperd mpvpaper)
-    rofi-wayland # app launcher for wayland
+    rofi # app launcher for wayland
 
     # misc
     cowsay
@@ -98,8 +98,8 @@
     uv
     elan
     nodejs
-    nodePackages.npm
-    nodePackages.pnpm
+    #nodePackages.npm
+    #nodePackages.pnpm
     yarn
     ghc
     haskell-language-server
