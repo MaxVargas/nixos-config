@@ -13,7 +13,7 @@ dunst
 
 # network manager
 # install by adding pkgs.networkmanagerapplet to packages
-nm-applet & #--indicator &
+#nm-applet & #--indicator &
 
 # firefox
 # firefox

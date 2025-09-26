@@ -34,7 +34,7 @@
     #gnutar
     #gawk
     #zstd
-    #gnupg
+    gnupg # GNU Privacy Guard
     libnotify # sends notifications to the daemon
     dunst # the notification daemon (alternate mako)
     graphviz
@@ -42,6 +42,7 @@
     swayimg # image viewer
     imv # another image viewer
     rmpc # rust music player
+    cdrkit # burn CDs
    
     # productivity
     obsidian
