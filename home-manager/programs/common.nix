@@ -9,6 +9,7 @@
     xz
     unzip
     p7zip
+    rar
 
     # utils
     ripgrep # recursively searches directories for a regex pattern
@@ -40,9 +41,10 @@
     graphviz
     xdg-utils
     swayimg # image viewer
-    imv # another image viewer
+    gthumb # another image viewer, cropping utility
     rmpc # rust music player
     cdrkit # burn CDs
+    fontpreview # view fonts
    
     # productivity
     obsidian
