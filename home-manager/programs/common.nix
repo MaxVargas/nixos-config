@@ -45,6 +45,7 @@
     rmpc # rust music player
     cdrkit # burn CDs
     fontpreview # view fonts
+    pdf2svg
    
     # productivity
     obsidian
