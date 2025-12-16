@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, ...}@inputs: {
   ###############################################################################
   #
   # All of max's home manager configuration
@@ -10,6 +10,7 @@
 
     ../../home-manager/programs
     ../../home-manager/shell
+    inputs.mango.hmModules.mango
   ];
 
   programs.git = {

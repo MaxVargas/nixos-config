@@ -17,13 +17,22 @@
     fzf # A command-line fuzzy finder
     killall # to kill
     dmidecode
+    pdf2svg
+    xdg-utils
+    gthumb # another image viewer, cropping utility
+    swayimg # image viewer
+    wl-clipboard
+    grim
+    slurp
 
     # Desktop
     waybar # status bar
-    swww # wallpaper daemon (alts. hyprpaper swaybg wpaperd mpvpaper)
+    swaybg # wallpaper daemon (alts. hyprpaper swaybg wpaperd mpvpaper)
     rofi # app launcher for wayland
+    quickshell
 
     # misc
+    neofetch
     cowsay
     file
     which
@@ -39,13 +48,8 @@
     libnotify # sends notifications to the daemon
     dunst # the notification daemon (alternate mako)
     graphviz
-    xdg-utils
-    swayimg # image viewer
-    gthumb # another image viewer, cropping utility
-    rmpc # rust music player
     cdrkit # burn CDs
     fontpreview # view fonts
-    pdf2svg
    
     # productivity
     obsidian
@@ -55,6 +59,7 @@
 
     # audio control
     pavucontrol
+    rmpc # rust music player
 
     # cloud native
     #docker-compose
@@ -135,16 +140,6 @@
     jq.enable = true; # A lightweight and flexible command-line JSON processor
     ssh.enable = true;
     #aria2.enable = true;
-
-    skim = {
-      enable = true;
-      enableZshIntegration = true;
-      defaultCommand = "rg --files --hidden";
-      changeDirWidgetOptions = [
-        "--preview 'exa --icons --git --color always -T -L 3 {} | head -200"
-        "--exact"
-      ];
-    };
   };
 
   services = {

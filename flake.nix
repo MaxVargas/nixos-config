@@ -11,19 +11,19 @@
     # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nur = {
-    #   url = "github:nix-community/NUR";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     hyprland = {
       url = "github:hyprwm/Hyprland";
       # ref = ""; # v0.42.0
       # submodules = true;
     };
-    # nix-ld = {
-    #   url = "github:Mic92/nix-ld";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    mango = {
+      url = "github:DreamMaoMao/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
@@ -57,9 +57,10 @@
               home-manager.users.${username} = import ./users/${username}/home.nix;
             }
 
-	    # Nix-ld for handling prepackaged binaries
-	    # nix-ld.nixosModules.nix-ld
-	    # { programs.nix-ld.dev.enable = true; }
+	    inputs.mango.nixosModules.mango
+	    {
+	      programs.mango.enable = true;
+	    }
           ];
         };
     };
