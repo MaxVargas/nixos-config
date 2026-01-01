@@ -21,6 +21,7 @@
     xdg-utils
     gthumb # another image viewer, cropping utility
     swayimg # image viewer
+    imagemagick
     wl-clipboard
     grim
     slurp

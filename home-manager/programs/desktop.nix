@@ -283,7 +283,8 @@
 
       firefox &
       foot &
-      quickshell &
+      #quickshell &
+      noctalia-shell &
       swaybg -i ~/Pictures/wallpapers/JeanBart.png >/dev/null 2>&1 &
     '';
   };

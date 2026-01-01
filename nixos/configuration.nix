@@ -122,17 +122,11 @@
       material-design-icons
 
       # normal fonts
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
+      iosevka
 
       # nerdfonts
       nerd-fonts.iosevka-term
-      nerd-fonts.jetbrains-mono
-      #(nerdfonts.override {fonts = ["IosevkaTerm" "JetBrainsMono"];})
-
-      # Iosevka
-      iosevka
+      nerd-fonts.iosevka-term-slab
     ];
 
     # use fonts specified by user rather than default ones
@@ -142,16 +136,18 @@
     # the reason there's Noto Color Emoji everywhere is to override DejaVu's
     # B&W emojis that would sometimes show instead of some Color emojis
     fontconfig.defaultFonts = {
-      serif = ["Noto Serif" "Noto Color Emoji"];
-      sansSerif = ["Noto Sans" "Noto Color Emoji"];
-      monospace = [
-        "JetBrainsMono Nerd Font" 
-        "IosevkaTerm Nerd Font" 
-	"Iosevka Etoile"
-	"Iosevka"
-        "Noto Color Emoji"
+      serif = [
+        "IosevkaTerm Slab Nerd Font"
       ];
-      emoji = ["Noto Color Emoji"];
+      sansSerif = [
+        "IosevkaTerm Nerd Font" 
+      ];
+      monospace = [
+        "IosevkaTerm Nerd Font" 
+	"IosevkaTerm Slab Nerd Font"
+	"Iosevka Etoile"
+      ];
+      emoji = ["Material Design Icons"];
     };
   };
   # End Fonts
