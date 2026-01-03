@@ -123,10 +123,17 @@
 
       # normal fonts
       iosevka
+      aporetic
+      fantasque-sans-mono
+      ibm-plex
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
 
       # nerdfonts
       nerd-fonts.iosevka-term
       nerd-fonts.iosevka-term-slab
+      nerd-fonts.fantasque-sans-mono
     ];
 
     # use fonts specified by user rather than default ones
@@ -137,18 +144,21 @@
     # B&W emojis that would sometimes show instead of some Color emojis
     fontconfig.defaultFonts = {
       serif = [
-        "IosevkaTerm Slab Nerd Font"
+        "Noto Serif"
+	"Noto Color Emoji"
+        "Aporetic Serif Mono"
       ];
       sansSerif = [
-        "IosevkaTerm Nerd Font" 
+        "Noto Sans"
+	"Noto Color Emoji"
+	"FantasqueSansM Nerd Font"
       ];
       monospace = [
-        "IosevkaTerm Nerd Font" 
 	"IosevkaTerm Slab Nerd Font"
-	"Iosevka Etoile"
       ];
-      emoji = ["Material Design Icons"];
+      emoji = [ "Noto Color Emoji" "Material Design Icons" ];
     };
+    fontconfig.antialias = true;
   };
   # End Fonts
   #####################################

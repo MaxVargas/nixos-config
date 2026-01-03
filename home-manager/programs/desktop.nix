@@ -146,7 +146,7 @@
 
       # Monitors
       monitorrule=DP-1,0.55,1,tile,0,1,0,0,2560,1440,60
-      monitorrule=HDMI-A-1,0.55,1,tile,0,1,2560,0,3480,2160,60
+      monitorrule=HDMI-A-1,0.55,1,tile,0,1.5,2560,0,3480,2160,60
 
       # Window effect
       blur=0
@@ -285,7 +285,7 @@
       foot &
       #quickshell &
       noctalia-shell &
-      swaybg -i ~/Pictures/wallpapers/JeanBart.png >/dev/null 2>&1 &
+      #swaybg -i ~/Pictures/wallpapers/JeanBart.png >/dev/null 2>&1 &
     '';
   };
 
