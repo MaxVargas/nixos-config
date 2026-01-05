@@ -22,7 +22,10 @@
     gthumb # another image viewer, cropping utility
     swayimg # image viewer
     imagemagick
+    cliphist
+    wl-clip-persist
     wl-clipboard
+    wlr-randr
     grim
     slurp
 
@@ -31,6 +34,7 @@
     swaybg # wallpaper daemon (alts. hyprpaper swaybg wpaperd mpvpaper)
     rofi # app launcher for wayland
     quickshell
+    bibata-cursors
 
     # misc
     neofetch
@@ -61,6 +65,7 @@
     # audio control
     pavucontrol
     rmpc # rust music player
+    mpd
 
     # cloud native
     #docker-compose
@@ -128,6 +133,16 @@
     neovim = {
       enable = true;
       vimAlias = true;
+      defaultEditor = true;
+    };
+
+    yazi = {
+      enable = true;
+      settings = {
+        tasks = {
+	  image_bound=[0 0];
+	};
+      };
     };
 
     # a cat clone written in rust
