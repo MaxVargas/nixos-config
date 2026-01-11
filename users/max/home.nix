@@ -14,10 +14,11 @@
   ];
 
   programs.git = {
-    userName = "MaxVargas";
-    userEmail = "mxvrgs@gmail.com";
     enable = true;
-    extraConfig = {
+    settings = {
+      user.name = "MaxVargas";
+      user.email = "mxvrgs@gmail.com";
+
       init.defaultBranch = "main";
     };
   };

@@ -243,7 +243,6 @@
       # Window Behavior
       no_border_when_single=1
       idleinhibit_ignore_visible=0 #??
-      inhibit_regardless_of_visibility=0 #??
       enable_floating_snap=0
       snap_distance=30
       

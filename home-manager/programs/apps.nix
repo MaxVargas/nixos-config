@@ -9,7 +9,7 @@
 
   home.packages = with pkgs; [
     discord
-    protonup
+    protonup-ng
     # wine
     mangohud # gaming performance monitor
     # nur.repos.ataraxiasjel.waydroid-script # Install android for AMD

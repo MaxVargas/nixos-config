@@ -128,7 +128,7 @@
       ibm-plex
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
+      noto-fonts-color-emoji
 
       # nerdfonts
       nerd-fonts.iosevka-term
@@ -303,19 +303,7 @@
   # Continue debugging to set up RMPC...
   systemd.services.mpd.environment = {
     # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
-    XDG_RUNTIME_DIR = "/run/user/${toString config.users.users.max.uid}"; # User-id must match above user. MPD will look inside this directory for the PipeWire socket.
-  };
-  services.mpd = {
-    enable = true;
-    user = "max";
-    network.listenAddress = "any";
-    startWhenNeeded = true;
-    extraConfig = ''
-      audio_output {
-        type "pipewire"
-        name "Pipewire!" # This can be whatever you want
-      }
-    '';
+    XDG_RUNTIME_DIR = "/run/user/${toString config.users.users.max.uid}"; # User-id must match MPD user. MPD will look inside this directory for the PipeWire socket.
   };
 
   #############################################################################
