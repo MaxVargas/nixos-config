@@ -37,7 +37,7 @@
     bibata-cursors
 
     # misc
-    neofetch
+    fastfetch
     cowsay
     file
     which
@@ -139,6 +139,8 @@
       enable = true;
       vimAlias = true;
       defaultEditor = true;
+      withRuby = false;
+      withPython3 = true;
     };
 
     yazi = {

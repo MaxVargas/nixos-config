@@ -128,8 +128,8 @@
       mousebind=SUPER,btn_left,moveresize,curmove
       #mousebind=NONE,btn_middle,togglemaximizescreen,0
       mousebind=SUPER,btn_right,moveresize,curresize
-      mousebind=NONE,btn_left,toggleoverview,1
-      mousebind=NONE,btn_right,killclient,0
+      #mousebind=NONE,btn_left,toggleoverview,1
+      #mousebind=NONE,btn_right,killclient,0
       
       # Axis Bindings
       axisbind=ALT,UP,viewtoleft_have_client
@@ -144,14 +144,11 @@
       ##
 
       # Monitors
-      monitorrule=DP-1,0.55,1,scroller,0,1,0,0,2560,1440,60
-      monitorrule=HDMI-A-1,0.55,1,center_tile,0,1.5,2560,0,3480,2160,60
+      monitorrule=name:DP-1,scale:1,x:0,y:0,width:2560,height:1440,refresh:60
+      monitorrule=name:HDMI-A-1,scale:1.5,x:2560,y:0,width:3480,height:2160,refresh:60
       exchange_cross_monitor=1
       scratchpad_cross_monitor=1
       single_scratchpad=1
-
-      # System & Hardware
-      adaptive_sync=1
 
       # Window effect
       blur=0
@@ -272,7 +269,7 @@
       # layout support:
       # tile,scroller,grid,deck,monocle,center_tile,vertical_tile,vertical_scroller
       tagrule=id:1,monitor_name:DP-1,layout_name:scroller
-      tagrule=id:2,monitor_name:HDMI-A-1,layout_name:center_tile
+      tagrule=id:2,monitor_name:HDMI-A-1,layout_name:tile
       tagrule=id:3,layout_name:tile
       tagrule=id:4,layout_name:tile
       tagrule=id:5,layout_name:tile

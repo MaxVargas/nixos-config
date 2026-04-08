@@ -11,11 +11,11 @@
     # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      # ref = ""; # v0.42.0
-      # submodules = true;
-    };
+    #hyprland = {
+    #  url = "github:hyprwm/Hyprland";
+    #  # ref = ""; # v0.42.0
+    #  # submodules = true;
+    #};
     mango = {
       url = "github:DreamMaoMao/mango";
       inputs.nixpkgs.follows = "nixpkgs";
