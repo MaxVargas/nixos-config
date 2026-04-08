@@ -40,6 +40,7 @@
 	  useSeparateOpacity = false;
 	  #backgroundOpacity = 0.01;
 	  floating = false;
+	  enableExclusionZoneInset = false;
 	  outerCorners = false;
           widgets = {
             left = [

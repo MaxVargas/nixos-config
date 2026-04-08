@@ -220,8 +220,8 @@
       hotarea_size=10
       enable_hotarea=0
       ov_tab_mode=1
-      overviewgappi=5
-      overviewgappo=30
+      overviewgappi=0
+      overviewgappo=0
 
       # Focus & Input
       focus_on_activate=1
@@ -283,7 +283,7 @@
       windowrule=isnamedscratchpad:1,width:1440,height:960,appid:foot-yazi
 
       # Autostart
-      exec-once=~/.config/mango/autostart.sh
+      # exec-once=~/.config/mango/autostart.sh
     '';
     autostart_sh = ''
       # see autostart.sh
