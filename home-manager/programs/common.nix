@@ -61,6 +61,7 @@
     hugo # static site generator
     glow # markdown previewer in terminal
     zathura # pdf reader. maybe okular?
+    presenterm # presentations
 
     # audio control
     pavucontrol

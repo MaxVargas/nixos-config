@@ -71,9 +71,9 @@
       
       # tag switch
       bind=ALT,Left,viewtoleft,0
-      bind=CTRL,Left,viewtoleft_have_client,0
+      bind=CTRL+TAB,Left,viewtoleft_have_client,0
       bind=ALT,Right,viewtoright,0
-      bind=CTRL,Right,viewtoright_have_client,0
+      bind=CTRL+TAB,Right,viewtoright_have_client,0
       bind=CTRL+ALT,Left,tagtoleft,0
       bind=CTRL+ALT,Right,tagtoright,0
       
@@ -241,7 +241,7 @@
       view_current_to_back=1
 
       # Window Behavior
-      no_border_when_single=1
+      no_border_when_single=0
       idleinhibit_ignore_visible=0 #??
       enable_floating_snap=0
       snap_distance=30
@@ -308,20 +308,20 @@
     '';
   };
 
-  wayland.windowManager.hyprland = {
-    # Whether to enable Hyprland wayland compositor
-    enable = true;
-    # Whether to enable XWayland
-    xwayland.enable = true;
+  #wayland.windowManager.hyprland = {
+  #  # Whether to enable Hyprland wayland compositor
+  #  enable = true;
+  #  # Whether to enable XWayland
+  #  xwayland.enable = true;
 
-    # Optional
-    # Whether to enable hyprland-session.target on hyprland startup
-    # Forces freezing on my system??
-    # systemd.enable = true;
+  #  # Optional
+  #  # Whether to enable hyprland-session.target on hyprland startup
+  #  # Forces freezing on my system??
+  #  # systemd.enable = true;
 
-    extraConfig = ''
-      ${builtins.readFile ./config/hyprland.conf}
-    '';
-  };
+  #  extraConfig = ''
+  #    ${builtins.readFile ./config/hyprland.conf}
+  #  '';
+  #};
   # ...
 }

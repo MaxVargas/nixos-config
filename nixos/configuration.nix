@@ -55,7 +55,7 @@
       substituters = [
         "https://cache.nixos.org?priority=10"
         #"https://nyx.chaotic.cx"
-        "https://hyprland.cachix.org"
+        #"https://hyprland.cachix.org"
         "https://nix-community.cachix.org"
         "https://cuda-maintainers.cachix.org"
         "https://yazi.cachix.org"
@@ -64,7 +64,7 @@
       # trusted-public-keys
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" 
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        #"hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
         "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
@@ -181,9 +181,6 @@
   hardware.steam-hardware.enable = true;
   programs.gamemode.enable = true;
 
-  # Waydroid for android simulation
-  # virtualisation.waydroid.enable = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -224,13 +221,7 @@
  
   # Enable the windowing system.
   # xserver is a blanket term for GUI stuff. 
-  ## services.xserver.enable = true;
   services.xserver.enable = false;
-
-  # Enable the GNOME Desktop Environment.
-  # GNOME uses wayland as default.
-  ##services.xserver.displayManager.gdm.enable = true;
-  ##services.xserver.desktopManager.gnome.enable = true;
 
   # TTY auto-login
   services.getty.autologinUser = "max";
@@ -245,13 +236,13 @@
   #####################################
   # Window manager. Wayland
   # See ../home-manager/programs/desktop.nix
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+  #programs.hyprland = {
+  #  enable = true;
+  #  xwayland.enable = true;
+  #};
 
-  programs.dconf.enable = true; # hyprland
-  security.polkit.enable = true; # needed according to the NixOS hyprland page
+  #programs.dconf.enable = true; # hyprland
+  #security.polkit.enable = true; # needed according to the NixOS hyprland page
 
   environment.sessionVariables = {
     # If your cursor becomes invisible
@@ -266,13 +257,23 @@
     WLR_NO_HARDWARE_CURSORS = "1";
   };
 
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ 
-    pkgs.xdg-desktop-portal
-    pkgs.xdg-desktop-portal-wlr
-    pkgs.xdg-desktop-portal-hyprland 
-    pkgs.xdg-desktop-portal-gtk
-  ];
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    config = {
+      common = {
+        default = [
+          "wlr"
+        ];
+      };
+    };
+    extraPortals = [ 
+      pkgs.xdg-desktop-portal
+      pkgs.xdg-desktop-portal-wlr
+      #pkgs.xdg-desktop-portal-hyprland 
+      #pkgs.xdg-desktop-portal-gtk
+    ];
+  };
 
   # End Wayland
   #####################################
