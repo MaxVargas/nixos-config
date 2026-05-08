@@ -28,6 +28,9 @@
     wlr-randr
     grim
     slurp
+    pkg-config
+    pkg-config-unwrapped
+    fontconfig
 
     # Desktop
     waybar # status bar
@@ -141,6 +144,7 @@
       defaultEditor = true;
       withRuby = false;
       withPython3 = true;
+      extraConfig = lib.fileContents /home/max/.config/nvim/init.lua.bak;
     };
 
     yazi = {

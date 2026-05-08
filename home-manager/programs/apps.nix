@@ -9,6 +9,7 @@
 
   home.packages = with pkgs; [
     discord
+    vesktop
     protonup-ng
     # wine
     mangohud # gaming performance monitor

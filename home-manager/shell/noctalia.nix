@@ -300,7 +300,7 @@
             criticalSoundFile = "";
             normalSoundFile = "";
             lowSoundFile = "";
-            excludedApps = "discord,firefox";
+            excludedApps = "vesktop,firefox";
           };
         };
 	dock = {
