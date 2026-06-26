@@ -19,22 +19,17 @@
     dmidecode
     pdf2svg
     xdg-utils
-    gthumb # another image viewer, cropping utility
     swayimg # image viewer
-    imagemagick
+    imagemagick # image editor
     cliphist
     wl-clip-persist
     wl-clipboard
-    wlr-randr
-    grim
-    slurp
-    pkg-config
-    pkg-config-unwrapped
-    fontconfig
+    wlr-randr # protocol to resize, rotate, reflect windows
+    grim # grab images (combine with next to screenshot)
+    slurp # select region in wayland compositor 
 
     # Desktop
-    waybar # status bar
-    swaybg # wallpaper daemon (alts. hyprpaper swaybg wpaperd mpvpaper)
+    # swaybg # wallpaper daemon (alts. hyprpaper swaybg wpaperd mpvpaper)
     rofi # app launcher for wayland
     quickshell
     bibata-cursors
@@ -46,7 +41,6 @@
     which
     tree
     tree-sitter
-    stylua
     lua-language-server
     #gnused
     #gnutar
@@ -61,16 +55,16 @@
    
     # productivity
     obsidian
-    hugo # static site generator
+    # hugo # static site generator
     glow # markdown previewer in terminal
     zathura # pdf reader. maybe okular?
     presenterm # presentations
 
-    # audio control
+    # audio/video control
     pavucontrol
     ffmpeg_7
     yt-dlp
-    rmpc # rust music player
+    # rmpc # rust music player
     mpd
 
     # cloud native
@@ -144,7 +138,7 @@
       defaultEditor = true;
       withRuby = false;
       withPython3 = true;
-      extraConfig = lib.fileContents /home/max/.config/nvim/init.lua.bak;
+      #extraConfig = lib.fileContents /home/hotdog/.config/nvim/init.lua.bak;
     };
 
     yazi = {
@@ -166,7 +160,7 @@
           address: "127.0.0.1:6600",
           password: None,
           theme: None,
-          cache_dir: "/home/max/Music",
+          cache_dir: "/home/hotdog/Music",
           on_song_change: None,
           volume_step: 5,
           scrolloff: 0,
@@ -318,7 +312,6 @@
     btop.enable = true; # replacement of htop/nmon
     eza.enable = true; # A modern replacement for ‘ls’
     jq.enable = true; # A lightweight and flexible command-line JSON processor
-    #aria2.enable = true;
   };
 
   services = {
@@ -328,11 +321,11 @@
     udiskie.enable = true;
 
     mpd = {
-      #user = "max";
+      #user = "hotdog";
       enable = true;
-      dataDir = "/home/max/.config/mpd";
-      musicDirectory = "/home/max/Music";
-      playlistDirectory = "/home/max/Music/playlists";
+      dataDir = "/home/hotdog/.config/mpd";
+      musicDirectory = "/home/hotdog/Music";
+      playlistDirectory = "/home/hotdog/Music/playlists";
       network.listenAddress = "$XDG_RUNTIME_DIR/mpd/socket";
       network.startWhenNeeded = true;
       extraConfig = ''

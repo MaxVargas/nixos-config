@@ -1,8 +1,8 @@
 # Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports =
@@ -23,13 +23,24 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  # Set your time zone.
+  time.timeZone = "America/Los_Angeles";
+
   # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
+  };
+
 
   #############################################################################
   #
@@ -38,10 +49,11 @@
   #############################################################################
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.max = {
+  users.users.hotdog = {
     isNormalUser = true;
-    initialPassword = "UnrealPassword";
-    extraGroups = [ "networkmanager" "wheel" "audio" "video" "input" ]; # wheel enables ‘sudo’ for the user.
+    initialPassword = "lol";
+    extraGroups = [ "networkmanager" "wheel" "audio" "video" "input" ]; # wheel enables `sudo` for the user
+    description = "hotdog";
   };
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
@@ -55,34 +67,27 @@
       substituters = [
         "https://cache.nixos.org?priority=10"
         #"https://nyx.chaotic.cx"
-        #"https://hyprland.cachix.org"
         "https://nix-community.cachix.org"
         "https://cuda-maintainers.cachix.org"
         "https://yazi.cachix.org"
+	"https://noctalia.cachix.org"
       ];
 
       # trusted-public-keys
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" 
-        #"hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
         "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
+	"noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       ];
 
       builders-use-substitutes = true;
-      max-jobs=2;
-      cores=2;
+      max-jobs=4;
+      cores=4;
     };
-
-    # Add yourself as a trusted user for devenv
-    extraOptions = ''
-      trusted-users = root max
-    '';
-
-    # Opinionated: disable channels
-    # channel.enable = false;
   };
+
 
   # do garbage collection weekly to keep disk usage low
   nix.gc = {
@@ -111,8 +116,6 @@
     };
   };
 
-  # Set your time zone.
-  time.timeZone = "America/Los_Angeles";
 
   #####################################
   # Fonts
@@ -163,6 +166,8 @@
   # End Fonts
   #####################################
 
+  #####################################
+  # Gaming
   # Couple programs we want from the beginning
   # Apparently steam is easiest from configuration.nix
   # Steam hardware for VR stuff
@@ -180,6 +185,8 @@
   };
   hardware.steam-hardware.enable = true;
   programs.gamemode.enable = true;
+  # End Gaming
+  #####################################
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -188,12 +195,9 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     curl
-    seatd # seat management daemon. needed for hyprland?
-    # elogind # login daemon
-    sysstat # monitoring
-    lm_sensors # monitoring
-    scrot # screenshots
-    yazi # terminal file manager
+    sysstat
+    lm_sensors
+    yazi
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -218,13 +222,13 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
- 
+
   # Enable the windowing system.
   # xserver is a blanket term for GUI stuff. 
   services.xserver.enable = false;
 
   # TTY auto-login
-  services.getty.autologinUser = "max";
+  services.getty.autologinUser = "hotdog";
 
   # Enable NVIDIA and gaming drivers
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -234,15 +238,7 @@
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
   #####################################
-  # Window manager. Wayland
-  # See ../home-manager/programs/desktop.nix
-  #programs.hyprland = {
-  #  enable = true;
-  #  xwayland.enable = true;
-  #};
-
-  #programs.dconf.enable = true; # hyprland
-  #security.polkit.enable = true; # needed according to the NixOS hyprland page
+  # Window manager
 
   environment.sessionVariables = {
     # If your cursor becomes invisible
@@ -268,25 +264,12 @@
       };
     };
     extraPortals = [ 
-      #pkgs.xdg-desktop-portal
       pkgs.xdg-desktop-portal-wlr
-      #pkgs.xdg-desktop-portal-hyprland 
-      #pkgs.xdg-desktop-portal-gtk
     ];
   };
 
-  # End Wayland
+  # End WM
   #####################################
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
 
   # Enable sound.
   #hardware.pulseaudio.enable = true;
@@ -304,7 +287,7 @@
   # Continue debugging to set up RMPC...
   systemd.services.mpd.environment = {
     # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
-    XDG_RUNTIME_DIR = "/run/user/${toString config.users.users.max.uid}"; # User-id must match MPD user. MPD will look inside this directory for the PipeWire socket.
+    XDG_RUNTIME_DIR = "/run/user/${toString config.users.users.hotdog.uid}"; # User-id must match MPD user. MPD will look inside this directory for the PipeWire socket.
   };
 
   #############################################################################
@@ -312,30 +295,12 @@
   # DONT TOUCH :)
   #
   #############################################################################
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
-
-  # This option defines the first version of NixOS you have installed on this particular machine,
-  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-  #
-  # Most users should NEVER change this value after the initial install, for any reason,
-  # even if you've upgraded your system to a new NixOS release.
-  #
-  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
-  # to actually do that.
-  #
-  # This value being lower than the current NixOS release does NOT mean your system is
-  # out of date, out of support, or vulnerable.
-  #
-  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-  # and migrated your data accordingly.
-  #
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.11"; # Did you read the comment?
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "25.11"; # Did you read the comment?
 
 }
-

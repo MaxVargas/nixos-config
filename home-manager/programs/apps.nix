@@ -8,14 +8,12 @@
   ];
 
   home.packages = with pkgs; [
-    discord
     vesktop
     protonup-ng
-    # wine
     mangohud # gaming performance monitor
-    # nur.repos.ataraxiasjel.waydroid-script # Install android for AMD
     obs-studio
-    burpsuite
+    caido-cli
+    caido-desktop
   ];
 
   home.sessionVariables = {

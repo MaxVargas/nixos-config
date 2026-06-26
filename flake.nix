@@ -4,18 +4,13 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/master";
     # The `follows` keyword in inputs is used for inheritance.
     # Here, `inputs.nixpkgs` of home-manager is kept consistent with
     # the `inputs.nixpkgs` of the current flake,
     # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #hyprland = {
-    #  url = "github:hyprwm/Hyprland";
-    #  # ref = ""; # v0.42.0
-    #  # submodules = true;
-    #};
     mango = {
       url = "github:DreamMaoMao/mango";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,7 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -34,7 +29,7 @@
 
     nixosConfigurations = {
       lemuria = let
-        username = "max";
+        username = "hotdog";
         specialArgs = {inherit username; inherit inputs;};
       in
         nixpkgs.lib.nixosSystem {
@@ -66,6 +61,7 @@
 	      };
             }
 
+            # Currently there is a warning; see issue#821 for mangowm
 	    inputs.mango.nixosModules.mango
 	    {
 	      programs.mango.enable = true;
