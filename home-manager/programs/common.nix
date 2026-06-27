@@ -55,7 +55,6 @@
    
     # productivity
     obsidian
-    # hugo # static site generator
     glow # markdown previewer in terminal
     zathura # pdf reader. maybe okular?
     presenterm # presentations
@@ -138,7 +137,6 @@
       defaultEditor = true;
       withRuby = false;
       withPython3 = true;
-      #extraConfig = lib.fileContents config/nvim/init.lua;
     };
 
     yazi = {
