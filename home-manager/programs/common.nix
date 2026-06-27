@@ -138,7 +138,7 @@
       defaultEditor = true;
       withRuby = false;
       withPython3 = true;
-      #extraConfig = lib.fileContents /home/hotdog/.config/nvim/init.lua.bak;
+      #extraConfig = lib.fileContents config/nvim/init.lua;
     };
 
     yazi = {

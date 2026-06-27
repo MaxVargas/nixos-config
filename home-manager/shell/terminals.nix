@@ -52,4 +52,108 @@ in
       };
     };
   };
+  programs.bash = {
+    enable = true;
+    enableCompletion = false;
+    initExtra = ''
+    # ============================================================
+    # History
+    # ============================================================
+    
+    HISTFILE="$HOME/.bash_history"
+    HISTSIZE=10000
+    HISTFILESIZE=10000
+    
+    # Ignore duplicates and commands starting with a space
+    HISTCONTROL=ignoreboth:erasedups
+    
+    # Append instead of overwriting
+    shopt -s histappend
+    
+    # ============================================================
+    # Colors
+    # ============================================================
+    
+    _clr_path="\[\e[38;5;180m\]"      # warm tan
+    _clr_branch="\[\e[38;5;137m\]"    # muted brown
+    _clr_amber="\[\e[38;5;229m\]"     # amber
+    _clr_dim="\[\e[38;5;242m\]"       # dim gray
+    _clr_sage="\[\e[38;5;107m\]"      # sage green
+    _clr_reset="\[\e[0m\]"
+    
+    # Nerd Font icons
+    _icon_folder="󰉋"
+    _icon_branch=""
+    
+    
+    # ============================================================
+    # Git branch
+    # ============================================================
+    
+    #_git_branch() {
+    #    git symbolic-ref --short HEAD 2>/dev/null \
+    #        || git rev-parse --short HEAD 2>/dev/null
+    #}
+    
+    _prompt_host() {
+        local h
+        h=$(hostname -s)
+    
+        if [[ "$h" == "localhost" ]]; then
+            echo "lemuria"
+        else
+            echo "$h"
+        fi
+    }
+    
+    
+    # Shorten path to last two components (similar to zsh %2~)
+    _short_pwd() {
+        pwd | awk -F/ '{
+            if (NF <= 3)
+                print $0
+            else
+                print ".../" $(NF-1) "/" $NF
+        }'
+    }
+    
+    
+    # ============================================================
+    # Prompt
+    # ============================================================
+    
+    __prompt_command() {
+        # local branch="$(_git_branch)"
+    
+        PS1="''${_clr_dim}\u@$(_prompt_host)''${_clr_reset}"
+        PS1+=" ''${_clr_amber}·''${_clr_reset} "
+        PS1+="''${_clr_path}''${_icon_folder} $(_short_pwd)''${_clr_reset}"
+    
+        # if [[ -n "$branch" ]]; then
+        #     PS1+=" ''${_clr_amber}·''${_clr_reset} "
+        #     PS1+="''${_clr_branch}''${_icon_branch} ''${branch}''${_clr_reset}"
+        # fi
+    
+        PS1+=" \n''${_clr_sage}𝛇❯''${_clr_reset} "
+    }
+    
+    PROMPT_COMMAND="__prompt_command"
+    
+    
+    # ============================================================
+    # Bash completion
+    # ============================================================
+    
+    # kill git completion entirely
+    if declare -F __git_complete >/dev/null; then
+      unset -f __git_complete __gitcomp _git
+    fi
+
+    complete -r git 2>/dev/null
+
+    if [[ -r /etc/bash_completion ]]; then
+        source /etc/bash_completion
+    fi
+    '';
+  };
 }

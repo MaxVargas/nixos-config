@@ -23,4 +23,6 @@
     };
     signing.format = null;
   };
+
+  home.file.".config/nvim".source=./nvim;
 }
