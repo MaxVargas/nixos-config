@@ -59,7 +59,7 @@
 
   programs.neovim = {
     enable = true;
-    vimAlias = true
+    vimAlias = true;
     defaultEditor = true;
     withRuby = false;
     withPython3 = true;

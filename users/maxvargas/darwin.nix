@@ -1,20 +1,20 @@
 { pkgs, ... }: {
   # nix-darwin system-level config
-  # nix.settings = {
-  #   experimental-features = [ "nix-command" "flakes" ];
-  #   nixpkgs.config.allowUnfree = true;
-  # };
-  # system = {
-  #   stateVersion = 7;
-  #   primaryUser = "maxvargas";
-  # };
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    nixpkgs.config.allowUnfree = true;
+  };
+  system = {
+    stateVersion = 7;
+    primaryUser = "maxvargas";
+  };
 
-  # environment.systemPackages = [ pkgs.home-manager ];
+  environment.systemPackages = [ pkgs.home-manager ];
 
-  # users.users.maxvargas = {
-  #   name = "maxvargas";
-  #   home = "/Users/maxvargas"
-  # };
+  users.users.maxvargas = {
+    name = "maxvargas";
+    home = "/Users/maxvargas";
+  };
 
   #homebrew = {
   #  enable = true;
