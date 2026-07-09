@@ -1,5 +1,5 @@
 {
-  description = "A simple NixOS flake";
+  description = "Flake for NixOS + Darwin";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -9,6 +9,10 @@
     # Here, `inputs.nixpkgs` of home-manager is kept consistent with
     # the `inputs.nixpkgs` of the current flake,
     # to avoid problems caused by different versions of nixpkgs.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mango = {
@@ -25,12 +29,19 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-
+  outputs = inputs@{ self, nixpkgs, home-manager, nix-darwin, ... }:
+  let
+    darwinPkgs = import nixpkgs {
+      system = "aarch64-darwin";
+      config.allowUnfree = true;
+    };
+  in
+  {
     nixosConfigurations = {
       lemuria = let
+        root = "/home";
         username = "hotdog";
-        specialArgs = {inherit username; inherit inputs;};
+        specialArgs = { inherit username; inherit inputs; };
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
@@ -54,18 +65,49 @@
 
               home-manager.extraSpecialArgs = inputs // specialArgs;
               home-manager.users.${username} = {
-	        imports = [
-		  ./users/${username}/home.nix
-		  inputs.noctalia.homeModules.default
-		];
-	      };
+                imports = [
+		            ./users/${username}/home.nix
+                inputs.noctalia.homeModules.default
+                ];
+              };
             }
 
             # Currently there is a warning; see issue#821 for mangowm
-	    inputs.mango.nixosModules.mango
-	    {
-	      programs.mango.enable = true;
-	    }
+	          inputs.mango.nixosModules.mango
+	          {
+	            programs.mango.enable = true;
+	          }
+          ];
+        };
+    };
+
+    darwinConfigurations = {
+      buyan = let
+        root = "/Users";
+        username = "maxvargas";
+        specialArgs = { inherit username; inherit inputs; };
+      in
+        nix-darwin.lib.darwinSystem {
+          inherit specialArgs;
+          system = "aarch64-darwin";
+          pkgs = darwinPkgs;
+          modules = [
+            ./users/${username}/darwin.nix
+
+            # Make home-manager as a nixos module
+            # so that home-manager configurations will be deployed automatically
+            home-manager.nixosModules.home-manager
+            {
+              # true forces home-manager and system to use the same nixpkgs
+              home-manager.useGlobalPkgs = false; 
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = inputs // specialArgs;
+              home-manager.users.${username} = {
+                imports = [
+		            ./users/${username}/home.nix
+                ];
+              };
+            }
           ];
         };
     };

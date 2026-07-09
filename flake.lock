@@ -25,11 +25,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782233665,
-        "narHash": "sha256-h/xOtrByoA/Ak1lWHn0O1lVZz4qWYbwOSLQ8YSwQO0I=",
+        "lastModified": 1783550008,
+        "narHash": "sha256-qbbZUk9IG9dLNwCPwdPBs6I5clxwugRpP+1YU+GPK20=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "062581938b4a378a82dfbb294b494808157153a1",
+        "rev": "f4d01c1d87c7c2ec909549165d5a8338f1bd3315",
         "type": "github"
       },
       "original": {
@@ -48,11 +48,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1782175273,
-        "narHash": "sha256-vVhPBZU4qFJADvznLRv+X/YdXWuwX78oZY0LU3bQg68=",
+        "lastModified": 1783521133,
+        "narHash": "sha256-Y3NUvUYck+EErTseufbNT3oM7zP5w/MUnHxdNL9gjLo=",
         "owner": "DreamMaoMao",
         "repo": "mango",
-        "rev": "8216cacb3b0f7c1de7bec6abd4be8b5acfe94b8e",
+        "rev": "7acdbb0ade77ff0e6e826e40828b6923c8898576",
         "type": "github"
       },
       "original": {
@@ -61,13 +61,34 @@
         "type": "github"
       }
     },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783395956,
+        "narHash": "sha256-AAbexQvDoK+6GFJdhY6kqjA+6ECKRkidgWxkn4gMwAA=",
+        "owner": "nix-darwin",
+        "repo": "nix-darwin",
+        "rev": "d5bd9cd77aea4c0a8f49e7fd85545671a208ed15",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-darwin",
+        "ref": "master",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1781577229,
-        "narHash": "sha256-lrp67w8AulE9Ks53n27I45ADSzbOCn4H+CNW1Ck8B+8=",
+        "lastModified": 1783224372,
+        "narHash": "sha256-8i/87eeoqiGE4yOTjwSA3Eh/ziJRQEmd/unYU+K27sk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "567a49d1913ce81ac6e9582e3553dd90a955875f",
+        "rev": "d407951447dcd00442e97087bf374aad70c04cea",
         "type": "github"
       },
       "original": {
@@ -99,11 +120,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782261624,
-        "narHash": "sha256-t3Rtwv7M5sa9JZxun+fowrTbdoPemiCSWLqQlHhvXs8=",
+        "lastModified": 1783552399,
+        "narHash": "sha256-u8xICSKh3kcfxeOvRJ2Hr97ICPN9UJkPCpsAKSxP1mk=",
         "owner": "noctalia-dev",
         "repo": "noctalia",
-        "rev": "0b1a3887625012d43298ea187c2dc4e18defc9e3",
+        "rev": "30ec6ef7fd487f642591ca2b8143beab78e27dc9",
         "type": "github"
       },
       "original": {
@@ -119,11 +140,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781847791,
-        "narHash": "sha256-Mo2YtNEGlcySnbq0YuP3nUKMAQCMAfE+TcCffo5vzD8=",
+        "lastModified": 1783498981,
+        "narHash": "sha256-X+3L+dhe9216kq/0AoCOBedL4zhAwjW8xiTKvZyng8Q=",
         "ref": "refs/heads/master",
-        "rev": "68c2c85c33845385f7ab8147b32f1450b1e468e0",
-        "revCount": 824,
+        "rev": "25eb04fb06c09bbdef91664f044ad22195862700",
+        "revCount": 828,
         "type": "git",
         "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       },
@@ -136,6 +157,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "mango": "mango",
+        "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
         "quickshell": "quickshell"

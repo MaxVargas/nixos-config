@@ -14,7 +14,8 @@
 
   home = {
     inherit username;
-    homeDirectory = "/home/${username}";
+    inherit root;
+    homeDirectory = "${root}/${username}";
     
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
