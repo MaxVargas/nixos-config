@@ -6,7 +6,7 @@
   ###############################################################################
 
   imports = [
-    ../../home-manager/core.nix
+    #../../home-manager/core.nix
 
     ../../home-manager/programs
     ../../home-manager/shell
@@ -24,5 +24,17 @@
     signing.format = null;
   };
 
-  home.file.".config/nvim".source=./nvim;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  };
+
+  home = {
+    file.".config/nvim".source=./nvim;
+    homeDirectory="/home/hotdog";
+    stateVersion = "26.05";
+  };
+  programs.home-manager.enable = true;
 }

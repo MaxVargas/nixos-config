@@ -30,16 +30,15 @@
       VISUAL = "nvim";
     };
 
-    initExtra = ''
+    initContent = ''
       # HOMEbrew
       eval "$(/opt/homebrew/bin/brew shellenv)"
 
       # -- Prompt -----------------------------
       source ${./zsh-prompt.zsh}
 
-      # -- Autosuggesions; default off, toggle with Ctrl+\ -----
-      source
-      ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+      # -- Autosuggestions; default off, toggle with Ctrl+\ -----
+      source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
       _toggle_autosuggestions() {
         if [[ $_ZSH_AUTOSUGGEST_DISABLED == 1 ]]; then

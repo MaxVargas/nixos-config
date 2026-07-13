@@ -6,7 +6,7 @@
   ###############################################################################
 
   imports = [
-    ../../home-manager/core.nix
+    #../../home-manager/core.nix
 
     ../../home-manager/programs/darwin.nix
     ../../home-manager/shell/darwin.nix
@@ -23,5 +23,17 @@
     signing.format = null;
   };
 
-  home.file.".config/nvim".source=../hotdog/nvim;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  };
+
+  home = {
+    username = "maxvargas";
+    stateVersion = "26.05";
+    file.".config/nvim".source = ../hotdog/nvim;
+  };
+  programs.home-manager.enable = true;
 }

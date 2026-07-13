@@ -21,13 +21,11 @@
     # productivity
     presenterm # presentations
     glow
-    yazi
 
     # programming
     gnumake
     cmake
     gcc
-    libgcc
     rustup
     uv
     nodejs
@@ -38,6 +36,7 @@
     ghc
     haskell-language-server
     cabal-install
+    sbcl
 
     # database
     mongosh

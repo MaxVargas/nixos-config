@@ -27,6 +27,10 @@
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-doom-emacs = {
+      url = "github:nix-community/nix-doom-emacs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nix-darwin, ... }:
@@ -39,7 +43,6 @@
   {
     nixosConfigurations = {
       lemuria = let
-        root = "/home";
         username = "hotdog";
         specialArgs = { inherit username; inherit inputs; };
       in
@@ -83,7 +86,6 @@
 
     darwinConfigurations = {
       buyan = let
-        root = "/Users";
         username = "maxvargas";
         specialArgs = { inherit username; inherit inputs; };
       in
@@ -94,18 +96,28 @@
           modules = [
             ./users/${username}/darwin.nix
 
+            ({...}: {
+              nix.enable = false;
+            })
+
             # Make home-manager as a nixos module
             # so that home-manager configurations will be deployed automatically
-            home-manager.nixosModules.home-manager
+            home-manager.darwinModules.home-manager
             {
               # true forces home-manager and system to use the same nixpkgs
               home-manager.useGlobalPkgs = false; 
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = inputs // specialArgs;
+
               home-manager.users.${username} = {
                 imports = [
 		            ./users/${username}/home.nix
+                inputs.nix-doom-emacs.hmModule
                 ];
+                programs.doom-emacs = {
+                  enable = true;
+                  doomPrivateDir = ./doom.d;
+                };
               };
             }
           ];
