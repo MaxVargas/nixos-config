@@ -22,6 +22,9 @@
     };
     signing.format = null;
   };
+  programs.doom-emacs = {
+    enable = true;
+  };
 
   nixpkgs = {
     config = {

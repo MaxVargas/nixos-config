@@ -1,8 +1,8 @@
 { config, pkgs, ...}:
 {
-  programs.emacs = {
+  programs.doom-emacs = {
     enable = true;
-    package = pkgs.emacs;
+    #package = pkgs.emacs;
     #extraConfig = ''
     #  (setq standard-indent 2)
     #'';

@@ -27,9 +27,10 @@
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-doom-emacs = {
-      url = "github:nix-community/nix-doom-emacs";
+    nix-doom-emacs-unstraightened = {
+      url = "github:marienz/nix-doom-emacs-unstraightened";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.doomdir.url = "./doom.d";
     };
   };
 
@@ -112,12 +113,8 @@
               home-manager.users.${username} = {
                 imports = [
 		            ./users/${username}/home.nix
-                inputs.nix-doom-emacs.hmModule
+                inputs.nix-doom-emacs-unstraightened.homeModule
                 ];
-                programs.doom-emacs = {
-                  enable = true;
-                  doomPrivateDir = ./doom.d;
-                };
               };
             }
           ];
