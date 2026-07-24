@@ -21,6 +21,7 @@
     # productivity
     presenterm # presentations
     glow
+    emacs
 
     # programming
     gnumake
@@ -37,6 +38,7 @@
     haskell-language-server
     cabal-install
     sbcl
+    nixfmt
 
     # database
     mongosh
