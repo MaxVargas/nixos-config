@@ -154,6 +154,11 @@ in
     if [[ -r /etc/bash_completion ]]; then
         source /etc/bash_completion
     fi
+
+    # ============================================================
+    # Doom Path
+    # ============================================================
+    export PATH="$HOME/.config/emacs/bin:$PATH"
     '';
   };
 }

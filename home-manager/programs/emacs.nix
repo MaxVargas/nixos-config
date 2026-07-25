@@ -1,10 +1,10 @@
 { config, pkgs, ...}:
 {
-  programs.doom-emacs = {
+  home.packages = with pkgs; [
+    fd
+    symbola
+  ];
+  programs.emacs = {
     enable = true;
-    #package = pkgs.emacs;
-    #extraConfig = ''
-    #  (setq standard-indent 2)
-    #'';
   };
 }

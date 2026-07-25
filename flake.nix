@@ -27,11 +27,6 @@
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #nix-doom-emacs-unstraightened = {
-    #  url = "github:marienz/nix-doom-emacs-unstraightened";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #  inputs.doomdir.url = "./doom.d";
-    #};
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nix-darwin, ... }:
@@ -112,8 +107,7 @@
 
               home-manager.users.${username} = {
                 imports = [
-		            ./users/${username}/home.nix
-                # inputs.nix-doom-emacs-unstraightened.homeModule
+                  ./users/${username}/home.nix
                 ];
               };
             }
