@@ -127,6 +127,7 @@
       # normal fonts
       iosevka
       aporetic
+      mononoki
       fantasque-sans-mono
       ibm-plex
       noto-fonts
@@ -136,6 +137,7 @@
       # nerdfonts
       nerd-fonts.iosevka-term
       nerd-fonts.iosevka-term-slab
+      nerd-fonts.mononoki
       nerd-fonts.fantasque-sans-mono
     ];
 

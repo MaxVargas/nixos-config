@@ -12,9 +12,10 @@
       # see config.conf
       #<Dollar>builtins.readFile ./config/mango.conf}
 
-      # Terminal and menu
+      # Terminal, Menu, Emacs
       bind=SUPER,Return,spawn,foot
       bind=SUPER,space,spawn,rofi -show drun -show-icons
+      bind=SUPER,e,spawn,emacsclient -c -a "emacs"
 
       # Quick reload config
       bind=SUPER+SHIFT,r,reload_config
@@ -24,7 +25,7 @@
       bind=SUPER,b,spawn,obsidian
       bind=SUPER,d,toggle_named_scratchpad,vesktop,none,vesktop
       bind=SUPER,g,spawn,steam
-      bind=SUPER,e,toggle_named_scratchpad,foot-yazi,none,foot -e yazi
+      bind=SUPER,r,toggle_named_scratchpad,foot-yazi,none,foot -e yazi
 
       ##
       ## KEYBINDS
@@ -64,7 +65,7 @@
       
       # scroller layout
       bind=ALT,e,set_proportion,1.0
-      bind=ALT,x,switch_proportion_preset,
+      bind=ALT,p,switch_proportion_preset,
       
       # switch layout
       bind=SUPER,n,switch_layout
@@ -299,7 +300,7 @@
       wl-paste --type text --watch cliphist store &
 
       firefox &
-      foot &
+      emacs --daemon --init-directory ~/.config/emacs/ &
       #quickshell &
       noctalia &
     '';

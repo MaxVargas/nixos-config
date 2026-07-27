@@ -52,7 +52,7 @@
     graphviz
     cdrkit # burn CDs
     fontpreview # view fonts
-   
+  
     # productivity
     obsidian
     glow # markdown previewer in terminal
