@@ -117,9 +117,10 @@
     #nodePackages.npm
     #nodePackages.pnpm
     yarn
+    zlib
     ghc
     haskell-language-server
-    cabal-install
+    stack
     haskellPackages.tidal
   ];
 

@@ -65,17 +65,17 @@
               home-manager.extraSpecialArgs = inputs // specialArgs;
               home-manager.users.${username} = {
                 imports = [
-		            ./users/${username}/home.nix
-                inputs.noctalia.homeModules.default
+                  ./users/${username}/home.nix
+                  inputs.noctalia.homeModules.default
                 ];
               };
             }
 
             # Currently there is a warning; see issue#821 for mangowm
-	          inputs.mango.nixosModules.mango
-	          {
-	            programs.mango.enable = true;
-	          }
+            inputs.mango.nixosModules.mango
+            {
+              programs.mango.enable = true;
+            }
           ];
         };
     };
