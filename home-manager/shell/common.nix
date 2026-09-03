@@ -6,5 +6,7 @@
     statix
     devenv
     direnv
+    nixfmt
+    shellcheck
   ];
 }

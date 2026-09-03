@@ -135,6 +135,7 @@
       noto-fonts-color-emoji
 
       # nerdfonts
+      nerd-fonts.symbols-only
       nerd-fonts.iosevka-term
       nerd-fonts.iosevka-term-slab
       nerd-fonts.mononoki

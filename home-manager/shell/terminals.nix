@@ -4,6 +4,10 @@ let
   font = "IosevkaTerm Nerd Font";
 in
 {
+  home.sessionVariables = {
+    DOOMDIR = "/etc/nixos/home-manager/programs/config/doom/";
+  };
+  
   programs.kitty = {
     enable = true;
   };

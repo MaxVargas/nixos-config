@@ -5,3 +5,4 @@
 *** [[https://mitchellh.com/feed.xml][Mitchell Hashimoto]]
 *** [[https://マリウス.com/index.xml][マリウス]]
 *** [[https://shape-of-code.com/feed/][Shape of Code]]
+** Miscellany :misc:

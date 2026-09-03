@@ -58,6 +58,7 @@
     glow # markdown previewer in terminal
     zathura # pdf reader. maybe okular?
     presenterm # presentations
+    pandoc # markdown-preview compiler for Doom's markdown module
 
     # audio/video control
     pavucontrol
@@ -102,15 +103,19 @@
     ipcalc  # it is a calculator for the IPv4/v6 addresses
     networkmanagerapplet # network manager
 
+    # python tooling (Doom's + other)
+    pipenv
+    python3Packages.pytest
+    (python3.withPackages (python-pkgs: [
+      python-pkgs.mutagen
+    ]))
+
     # programming
     gnumake
     cmake
     gcc
     libgcc
     rustup
-    (python3.withPackages (python-pkgs: [
-      python-pkgs.mutagen
-    ]))
     uv
     elan
     nodejs
@@ -120,7 +125,9 @@
     zlib
     ghc
     haskell-language-server
+    cabal-install
     stack
+    haskellPackages.hoogle
     haskellPackages.tidal
   ];
 
@@ -312,6 +319,10 @@
     eza.enable = true; # A modern replacement for ‘ls’
     jq.enable = true; # A lightweight and flexible command-line JSON processor
   };
+
+  home.activation.rustAnalyzerComponent = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    run ${pkgs.rustup}/bin/rustup component add rust-analyzer >/dev/null 2?&1 || true
+  '';
 
   services = {
     syncthing.enable = true;
