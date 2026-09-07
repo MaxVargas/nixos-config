@@ -174,6 +174,7 @@
   (require 'ox-html)
   (require 'ox-publish)
 
+  (setq org-html-html5-fancy t)
   (setq org-publish-project-alist
         '(("roam-public"
            :components ("roam-org" "roam-assets"))
@@ -182,7 +183,7 @@
            :base-extension "org"
            :recursive t
            :publishing-function my-org-roam-publish
-           :publishing-directory "~/org-publish-test"
+           :publishing-directory "~/Code/caretSite/"
            :selection-number nil
            :with-toc nil
            :body-only t
@@ -192,7 +193,7 @@
            :base-extension "jpg\\|JPG"
            :recursive t
            :publishing-function org-publish-attachment
-           :publishing-directory "~/org-publish-test")))
+           :publishing-directory "~/Code/caretSite/")))
 
   ;; Custom HTML backend
   (org-export-define-derived-backend 'my-html 'html
@@ -260,14 +261,14 @@
             ;;Create the TeX document to render
             (with-temp-file tex-temp
               (insert
-               "\\documentclass[preview,border=2pt]{standalone}\n"
+               "\\documentclass{article}\n"
                "\\usepackage{euler}\n"
                "\\usepackage{tikz}\n"
                "\\usepackage{tikz-cd}\n"
+               "\\usepackage{urwchancal}\n"
+               "\\pagestyle{empty}\n"
                "\\begin{document}\n"
-               "\\begin{tikzcd}\n"
                code
-               "\\end{tikzcd}\n"
                "\\end{document}\n"))
             (let ((exit-code
                    (call-process
@@ -288,6 +289,7 @@
                     nil
                     "*tikzcd-dvisvgm*"
                     nil
+                    "--font-format=woff2"
                     "-o"
                     svg-temp
                     dvi-temp)))
