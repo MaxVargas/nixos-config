@@ -175,6 +175,7 @@
   (require 'ox-publish)
 
   (setq org-html-html5-fancy t)
+  (setq org-html-htmlize-output-type 'nil)
   (setq org-publish-project-alist
         '(("roam-public"
            :components ("roam-org" "roam-assets"))
@@ -184,10 +185,15 @@
            :recursive t
            :publishing-function my-org-roam-publish
            :publishing-directory "~/Code/caretSite/"
+           :exclude-tags nil
+           :with-date t
+           :with-footnotes t
+           :with-title t
            :selection-number nil
            :with-toc nil
-           :body-only t
-           :html-postamble nil)
+           :body-only nil
+           :html-postamble nil
+           :htmlize-output-type nil)
           ("roam-assets"
            :base-directory "~/caret/"
            :base-extension "jpg\\|JPG"
@@ -198,7 +204,9 @@
   ;; Custom HTML backend
   (org-export-define-derived-backend 'my-html 'html
     :translate-alist
-    '((special-block . my-html-special-block)))
+    '((template . my-html-template)
+      (special-block . my-html-special-block)
+      (latex-fragment . my-html-latex-fragment)))
 
   ;; Publishing function
   (defun my-org-roam-publish (plist filename pub-dir)
@@ -218,6 +226,27 @@
                (float-time (time-subtract (current-time) start))
                filename)))
 
+  ;; Custom HTML template
+  (defun my-html-template (contents info)
+    (let ((title (plist-get info :title))
+          (date  (plist-get info :date)))
+      (concat
+       (when title
+         (format
+          "<header class=\"post-header\">
+  <h1>%s</h1>
+  <div class=\"post-meta\">
+    %s
+  </div>
+</header>
+"
+          (org-export-data title info)
+          (if date
+              (format "<time>%s</time>"
+                      (org-export-data date info))
+            "")))
+       contents)))
+
   ;; Special block translator
   (defun my-html-special-block (special-block contents info)
     (let ((type (org-element-property :type special-block)))
@@ -225,6 +254,53 @@
           (my-html-tikzcd special-block info)
         ;; Non-tikzcd gets rendered normally
         (org-html-special-block special-block contents info))))
+
+  ;; KaTeX render
+  (defun my-katex-render (latex display)
+    (with-temp-buffer
+      (insert latex)
+      (let ((exit-code
+             (if display
+                 (call-process-region
+                  (point-min) (point-max)
+                  "katex"
+                  t t nil
+                  "-F" "html"
+                  "-d"
+                  "-t")
+               (call-process-region
+                (point-min) (point-max)
+                "katex"
+                t t nil
+                "-F" "html"
+                "-t"))))
+        (unless (zerop exit-code)
+          (error "KaTeX failed: %s" (buffer-string)))
+        (buffer-string))))
+
+  ;; Latex Fragment
+  (defun my-html-latex-fragment (fragment contents info)
+    (let* ((value (org-element-property :value fragment))
+           (display
+            (or (string-prefix-p "$$" value)
+                (string-prefix-p "\\[" value)))
+           (math
+            (cond
+             ((and (string-prefix-p "$$" value)
+                   (string-suffix-p "$$" value))
+              (string-trim
+               (substring value 2 -2)))
+             ((and (string-prefix-p "\\[" value)
+                   (string-suffix-p "\\]" value))
+              (string-trim
+               (substring value 2 -2)))
+             ((and (string-prefix-p "$" value)
+                   (string-suffix-p "$" value))
+              (string-trim
+               (substring value 1 -1)))
+             (t
+              value))))
+      (my-katex-render math display)))
 
   ;; TikZ-cd -> SVG
   (defun my-html-tikzcd (special-block info)

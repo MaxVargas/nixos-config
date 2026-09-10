@@ -52,6 +52,7 @@
     graphviz
     cdrkit # burn CDs
     fontpreview # view fonts
+    katex
   
     # productivity
     obsidian
