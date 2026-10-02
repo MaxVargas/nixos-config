@@ -176,6 +176,7 @@
 
   (setq org-html-html5-fancy t)
   (setq org-html-htmlize-output-type 'nil)
+  (setq org-export-with-section-numbers nil)
   (setq org-publish-project-alist
         '(("roam-public"
            :components ("roam-org" "roam-assets"))
@@ -286,18 +287,25 @@
                 (string-prefix-p "\\[" value)))
            (math
             (cond
+             ;; Display math
              ((and (string-prefix-p "$$" value)
                    (string-suffix-p "$$" value))
               (string-trim
                (substring value 2 -2)))
+             ;; Display math
              ((and (string-prefix-p "\\[" value)
                    (string-suffix-p "\\]" value))
               (string-trim
                (substring value 2 -2)))
+             ;; Inline math
              ((and (string-prefix-p "$" value)
                    (string-suffix-p "$" value))
               (string-trim
                (substring value 1 -1)))
+             ((and (string-prefix-p "\\(" value)
+                   (string-suffix-p "\\)" value))
+              (string-trim
+               (substring value 2 -2)))
              (t
               value))))
       (my-katex-render math display)))
